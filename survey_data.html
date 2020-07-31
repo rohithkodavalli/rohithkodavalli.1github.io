@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Data</title>
+<style>
+    body {
+    	width: 500px;
+    	margin: 0 auto;
+    	padding: 0 30px;
+    	border: 2px solid blue;
+    }
+    dt {
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+//<![CDATA[
+var decode = function ( text ) {
+    text = text.replace(/\+/g, " ");
+    text = text.replace(/%[a-fA-F0-9]{2}/g, 
+        function ( text ) {
+            return String.fromCharCode( "0x" + text.substr(1,2));
+        }
+    );
+    return text;
+}
+    
+var display_data = function () {
+    alert('-'+location.search+'-');
+    var query = location.search.replace("?", "");
+    if ( query == "" ) return;
+    
+    var fields = query.split("&");
+    
+    if ( fields.length == 0 ) {
+        document.write("<p>No data was submitted.</p>");
+    } else {
+        document.write("<dl>");
+        var field_parts;
+        for ( var i in fields ) {
+            field_parts = fields[i].split("=");
+            field_parts[0] = decode( field_parts[0] );
+            field_parts[1] = decode( field_parts[1] );
+            document.write("<dt>" + field_parts[0] + "</dt>");
+            document.write("<dd>" + field_parts[1] + "</dd>");
+        }
+        document.write("</dl>");
+    }
+}
+//]]>
+</script>
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <ul class="nav shadow">
+            
+            <li  class="nav-item"><a class="active" href="#home"><img src="./assets/images/logo.png" class="main-logo"></a></li>
+            <li  class="nav-item"><a class="active" href="index.html">Home</a></li>
+            <li  class="nav-item"><a href="computerscience.html">Program Description</a></li>
+            <li  class="nav-item"><a href="teachingassistance.html">Teaching Assistance</a></li>
+            <li  class="nav-item"><a href="gpacalucator.html">GPA Caluator</a></li>
+            <li  class="nav-item"><a href="scholarshipandstaff.html">Our Staff</a></li>
+            <li  class="nav-item"><a href="contactus.html">Contact Us</a></li>
+           
+            <li  class="nav-item nav-right"><a href="#about"><input type="text" class="search" placeholder="Search" style="width: 150px;"></a></li>      
+            <li  class="nav-item nav-right"><a href="#about"><i class="fa fa-facebook-f"></i></a></li>      
+            <li  class="nav-item nav-right"><a href="#about"><i class="fa fa-twitter-square"></i></a></li>      
+            <li  class="nav-item nav-right"><a href="#about"><i class="fa fa-envelope-square"></i></a></li>      
+            </ul>
+            
+        </header>
+        <br><br>
+        <main>
+
+        <div class="show-content" style="border:none">
+            <div class="item"></div>
+            <div class="item2">
+
+
+    <h1>Survey Data</h1>
+    <script>display_data();</script>
+</div>
+<div class="item"></div>
+</div>
+</main>
+
+<footer>
+<div class="footer shadow">
+<center>© 2020 Copyright:
+     Rohit</a></center>
+
+</div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+</html>
